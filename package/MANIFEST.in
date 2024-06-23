@@ -1,0 +1,5 @@
+recursive-include src/metapathpredict_e/ *.py
+recursive-include src/metapathpredict_e/data *.pkl
+recursive-include src/metapathpredict_e/data *.keras
+recursive-include src/metapathpredict_e/data *.py
+
