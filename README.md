@@ -74,20 +74,21 @@ The following functions can be implemented to run MetaPathPredict-E on the comma
 # predict method for making KEGG module presence/absence predictions on input gene annotations
 
 usage: MetaPathPredict_E [-h] --input INPUT [INPUT ...] --annotation-format ANNOTATION_FORMAT
-                       [--kegg-modules KEGG_MODULES [KEGG_MODULES ...]] --output OUTPUT
+                         [--kegg-modules KEGG_MODULES [KEGG_MODULES ...]] --output OUTPUT --group GROUP
 
 options:
   -h, --help            show this help message and exit
   --input INPUT [INPUT ...], -i INPUT [INPUT ...]
                         input file path(s) and name(s) [required]
   --annotation-format ANNOTATION_FORMAT, -a ANNOTATION_FORMAT
-                        annotation format (kofamscan, kofamkoala, dram, or koala) [default:
-                        kofamscan]
+                        annotation format (kofamscan, kofamscan-web, dram, or koala) [default: kofamscan]
   --kegg-modules KEGG_MODULES [KEGG_MODULES ...], -k KEGG_MODULES [KEGG_MODULES ...]
                         KEGG modules to predict [default: MetaPathPredict-E KEGG modules]
   --output OUTPUT, -o OUTPUT
                         output file path and name [required]
-```
+  --group GROUP, -g GROUP
+                        eukaryotic group; one of fungi, streptophyta, chlorophyta, alveolata, rhizaria, stramenopiles, excavata,
+                        metazoa, or general [required]```
 
 <br>
 
