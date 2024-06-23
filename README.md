@@ -88,7 +88,8 @@ options:
                         output file path and name [required]
   --group GROUP, -g GROUP
                         eukaryotic group; one of fungi, streptophyta, chlorophyta, alveolata, rhizaria, stramenopiles, excavata,
-                        metazoa, or general [required]```
+                        metazoa, or general [required]
+```
 
 <br>
 
