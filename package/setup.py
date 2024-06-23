@@ -11,7 +11,7 @@ CLASSIFIERS = [
 
 setup(
     name="metapathpredict_e", 
-    description="Tool for predicting the presence or absence of KEGG modules in eukaryotic genomes",
+    description="Tool for predicting the presence or absence of KEGG modules in eukaryotic genomes and transcriptomes",
     author="D. Geller-McGrath",
     author_email="dgellermcgrath@gmail.com",
     package_dir={"": "src"},
@@ -29,7 +29,7 @@ setup(
             #"MetaPathTrain = metapathpredict.MetaPathPredict:Models.train", 
             "MetaPathPredict_E = metapathpredict_e.MetaPathPredict_E:Models.predict_eukaryote", 
             #"MetaPathModules = metapathpredict.MetaPathPredict:Models.show_available_modules",
-            #"DownloadModels = metapathpredict_e.download_models:Download.download_models",
+            "Download_MetaPathPredictE_Models = metapathpredict_e.download_models:Download.download_models",
         ]
     },
     classifiers=CLASSIFIERS,
