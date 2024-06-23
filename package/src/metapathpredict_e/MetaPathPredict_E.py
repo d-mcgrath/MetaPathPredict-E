@@ -233,21 +233,21 @@ class Models:
         logging.info("Making KEGG module presence/absence predictions")
 
         predictions_list = []
-        for prediction_iteration in range(1):
+        #for prediction_iteration in range(1):
           
 
-          # predict
-          logging.info(f"Model {prediction_iteration} is making predictions")
-          predictions = models[prediction_iteration].predict(input_features.feature_df[prediction_iteration])
+        # predict
+        logging.info(f"Model for {args.group} is making predictions")
+        predictions = model.predict(input_features.feature_df)
 
-          # round predictions
-          roundedPreds = np.round(predictions)
+        # round predictions
+        roundedPreds = np.round(predictions)
           
-          predsDf = pd.DataFrame(data = roundedPreds, columns = labels[prediction_iteration]).astype(int)
+        predsDf = pd.DataFrame(data = roundedPreds, columns = labels).astype(int)
 
-          predictions_list.append(predsDf)
+        predictions_list.append(predsDf)
           
-          logging.info(f"Model {prediction_iteration} completed making predictions")
+        logging.info(f"Model for {args.group} completed making predictions")
           
         logging.info("All done.")
 
