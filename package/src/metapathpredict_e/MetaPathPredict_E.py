@@ -42,8 +42,8 @@ import warnings
 from sklearn.exceptions import InconsistentVersionWarning
 warnings.filterwarnings(action='ignore', category=InconsistentVersionWarning)
 
-from metapathpredict.utils import InputData
-from metapathpredict.utils import AnnotationList
+from metapathpredict_e.utils import InputData
+from metapathpredict_e.utils import AnnotationList
 
 
 class Models:
