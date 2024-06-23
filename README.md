@@ -103,17 +103,18 @@ MetaPathPredict_E -i /path/to/kofamscan_annotations_1.tsv -a kofamscan -o /resul
 MetaPathPredict_E \
 -i kofamscan_annotations_1.tsv kofamscan_annotations_2.tsv kofamscan_annotations_3.tsv \
 -a kofamscan \
+-g fungi \
 -k M00001 M00003 \
 -o /results/predictions.tsv
 
 # Multiple KofamScan datasets in a directory
-MetaPathPredict_E -i annotations/*.tsv -a kofamscan -o /results/predictions.tsv
+MetaPathPredict_E -i annotations/*.tsv -a kofamscan -g fungi -o /results/predictions.tsv
 
 # One DRAM gene annotation dataset
-MetaPathPredict_E -i dram_annotation.tsv -a dram -o /results/predictions.tsv
+MetaPathPredict_E -i dram_annotation.tsv -a dram -g fungi -o /results/predictions.tsv
 
 # Multiple DRAM datasets in a directory
-MetaPathPredict_E -i annotations/*.tsv -a dram -o /results/predictions.tsv
+MetaPathPredict_E -i annotations/*.tsv -a dram -g fungi -o /results/predictions.tsv
 ```
 
 <br>
