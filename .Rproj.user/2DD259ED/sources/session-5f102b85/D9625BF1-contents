@@ -1,0 +1,88 @@
+# start a compute node w/ pkeras conda env
+# start an ipython session
+# ipython --no-autoindent
+
+import pickle
+import numpy as np
+import pandas as pd
+
+
+val_data_paths = {}
+val_data_paths["fungi"] = "/vortexfs1/omics/edgcomb/home_vedgcomb/dgellermcgrath/MetaPathPredict-E/keras/training_files/euks/november_2023/training_genome_data/y_val_common_final_fungiData_partition.tsv.gz"
+val_data_paths["streptophyta"] = "/vortexfs1/omics/edgcomb/home_vedgcomb/dgellermcgrath/MetaPathPredict-E/keras/training_files/euks/november_2023/training_genome_data/y_val_common_final_streptophytaData.tsv.gz"
+val_data_paths["chlorophyta"] = "/vortexfs1/omics/edgcomb/home_vedgcomb/dgellermcgrath/MetaPathPredict-E/keras/training_files/euks/november_2023/training_genome_data/y_val_common_final_chlorophytaData_partition.tsv.gz"
+val_data_paths["alveolata"] = "/vortexfs1/omics/edgcomb/home_vedgcomb/dgellermcgrath/MetaPathPredict-E/keras/training_files/euks/november_2023/training_genome_data/y_val_common_final_alveolataData.tsv.gz"
+val_data_paths["rhizaria"] = "/vortexfs1/omics/edgcomb/home_vedgcomb/dgellermcgrath/MetaPathPredict-E/keras/training_files/euks/november_2023/training_genome_data/y_val_common_final_rhizariaData.tsv.gz"
+val_data_paths["stramenopiles"] = "/vortexfs1/omics/edgcomb/home_vedgcomb/dgellermcgrath/MetaPathPredict-E/keras/training_files/euks/november_2023/training_genome_data/y_val_common_final_stramenopilesData.tsv.gz"
+val_data_paths["excavata"] = "/vortexfs1/omics/edgcomb/home_vedgcomb/dgellermcgrath/MetaPathPredict-E/keras/training_files/euks/november_2023/training_genome_data/y_val_common_final_excavataData.tsv.gz"
+val_data_paths["metazoa"] = "/vortexfs1/omics/edgcomb/home_vedgcomb/dgellermcgrath/MetaPathPredict-E/keras/training_files/euks/november_2023/training_genome_data/y_val_common_final_metazoaData.tsv.gz"
+val_data_paths["general"] = "/vortexfs1/omics/edgcomb/home_vedgcomb/dgellermcgrath/MetaPathPredict-E/keras/training_files/euks/november_2023/training_genome_data/y_val_common_final_allData_partition.tsv.gz"
+
+
+label_out_paths = {}
+label_out_paths["fungi"] = "/vortexfs1/omics/edgcomb/home_vedgcomb/dgellermcgrath/MetaPathPredict-E/keras/training_files/euks/november_2023/training_genome_data/fungi_module_names_062224.pkl"
+label_out_paths["streptophyta"] = "/vortexfs1/omics/edgcomb/home_vedgcomb/dgellermcgrath/MetaPathPredict-E/keras/training_files/euks/november_2023/training_genome_data/streptophyta_module_names_062224.pkl"
+label_out_paths["chlorophyta"] = "/vortexfs1/omics/edgcomb/home_vedgcomb/dgellermcgrath/MetaPathPredict-E/keras/training_files/euks/november_2023/training_genome_data/chlorophyta_module_names_062224.pkl"
+label_out_paths["alveolata"] = "/vortexfs1/omics/edgcomb/home_vedgcomb/dgellermcgrath/MetaPathPredict-E/keras/training_files/euks/november_2023/training_genome_data/alveolata_module_names_062224.pkl"
+label_out_paths["rhizaria"] = "/vortexfs1/omics/edgcomb/home_vedgcomb/dgellermcgrath/MetaPathPredict-E/keras/training_files/euks/november_2023/training_genome_data/rhizaria_module_names_062224.pkl"
+label_out_paths["stramenopiles"] = "/vortexfs1/omics/edgcomb/home_vedgcomb/dgellermcgrath/MetaPathPredict-E/keras/training_files/euks/november_2023/training_genome_data/stramenopiles_module_names_062224.pkl"
+label_out_paths["excavata"] = "/vortexfs1/omics/edgcomb/home_vedgcomb/dgellermcgrath/MetaPathPredict-E/keras/training_files/euks/november_2023/training_genome_data/excavata_module_names_062224.pkl"
+label_out_paths["metazoa"] = "/vortexfs1/omics/edgcomb/home_vedgcomb/dgellermcgrath/MetaPathPredict-E/keras/training_files/euks/november_2023/training_genome_data/metazoa_module_names_062224.pkl"
+label_out_paths["general"] = "/vortexfs1/omics/edgcomb/home_vedgcomb/dgellermcgrath/MetaPathPredict-E/keras/training_files/euks/november_2023/training_genome_data/general_module_names_062224.pkl"
+
+
+for key, value in val_data_paths.items():
+  labels = pd.read_csv(value, sep = "\t", engine = "pyarrow")
+  print("\n")
+  print("\n")
+  print(f"Column names for: {key}\n")
+  print(labels.columns)
+
+
+for key, value in val_data_paths.items():
+  labels = pd.read_csv(value, sep = "\t", engine = "pyarrow")
+  if key != "general":
+    labels.drop(labels.columns[[0, 1, 2, 3, 4]], axis=1, inplace=True)
+    labels = labels.columns.tolist()
+    print("\n")
+    print("\n")
+    print(f"Column names for: {key}\n")
+    print(labels)
+  else:
+    labels.drop(labels.columns[[0, 1, 2]], axis=1, inplace=True)
+    labels = labels.columns.tolist()
+    print("\n")
+    print("\n")
+    print(f"Column names for: {key}\n")
+    print(labels)
+  
+
+# capture the kegg module column names, and save each
+# model's module names as a list in a .pkl file
+for key, value in val_data_paths.items():
+  labels = pd.read_csv(value, sep = "\t", engine = "pyarrow")
+  if key != "general":
+    labels.drop(labels.columns[[0, 1, 2, 3, 4]], axis=1, inplace=True)
+    labels = labels.columns.tolist()
+    print("\n")
+    print("\n")
+    print(f"Column names for: {key}\n")
+    print(labels)
+    print("\n")
+    with open(label_out_paths[key], 'wb') as f:
+      pickle.dump(labels, f)
+    print(f"Saved KEGG module names for: {key}")
+  else:
+    labels.drop(labels.columns[[0, 1, 2]], axis=1, inplace=True)
+    labels = labels.columns.tolist()
+    print("\n")
+    print("\n")
+    print(f"Column names for: {key}\n")
+    print(labels)
+    print("\n")
+    with open(label_out_paths[key], 'wb') as f:
+      pickle.dump(labels, f)
+    print(f"Saved KEGG module names for: {key}")
+
+
+
