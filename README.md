@@ -1,6 +1,6 @@
 # MetaPathPredict-E
 
-The MetaPathPredict-E Python module is an extension to MetaPathPredict. It is designed to predict the presence or absence of KEGG metabolic modules in eukaryotic genomes and transcriptomes recovered from environmental sequencing efforts. It contains models to make predictions for several eukaryotic groups including Fungi, Streptophyta, Chlorophyta, Excavata, Metazoa, Alveolata (excluding Apicomplexa), Rhizaria, and Stramenopiles. It also contains a general model that can be used for any of these, or microbial eukaryotes from other groups.
+The MetaPathPredict-E Python module is an extension to MetaPathPredict. It is designed to predict the presence or absence of KEGG metabolic modules in eukaryotic genomes and transcriptomes recovered from environmental sequencing efforts. It contains models to make predictions for several eukaryotic groups including Fungi, Streptophyta, Chlorophyta, Excavata, Metazoa, Alveolata (excluding Apicomplexa), Rhizaria, and Stramenopiles. It also contains a general model that can be used for any of these, or microbial eukaryotes from other groups. MetaPathPredict-E can be used on eukaryotic genomes and transcriptomes ranging in degree of estimated completeness, from partial to high-quality. The current version has been designed for use on datasets that do not contain contamination.
 
 ## Installation
 

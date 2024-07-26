@@ -29,7 +29,7 @@ setup(
             #"MetaPathTrain = metapathpredict.MetaPathPredict:Models.train", 
             "MetaPathPredict_E = metapathpredict_e.MetaPathPredict_E:Models.predict_eukaryote", 
             #"MetaPathModules = metapathpredict.MetaPathPredict:Models.show_available_modules",
-            "Download_MetaPathPredictE_Models = metapathpredict_e.download_models:Download.download_models",
+            "Download_MetaPathPredictE_Models = metapathpredict_e.Download_MetaPathPredictE_Models:Download.download_models",
         ]
     },
     classifiers=CLASSIFIERS,
