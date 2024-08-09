@@ -1,0 +1,3 @@
+[console_scripts]
+Download_MetaPathPredictE_Models = metapathpredict_e.Download_MetaPathPredictE_Models:Download.download_models
+MetaPathPredict_E = metapathpredict_e.MetaPathPredict_E:Models.predict_eukaryote

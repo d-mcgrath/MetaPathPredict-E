@@ -1,0 +1,12 @@
+MANIFEST.in
+setup.py
+src/metapathpredict_e/Download_MetaPathPredictE_Models.py
+src/metapathpredict_e/MetaPathPredict_E.py
+src/metapathpredict_e/__init__.py
+src/metapathpredict_e/utils.py
+src/metapathpredict_e.egg-info/PKG-INFO
+src/metapathpredict_e.egg-info/SOURCES.txt
+src/metapathpredict_e.egg-info/dependency_links.txt
+src/metapathpredict_e.egg-info/entry_points.txt
+src/metapathpredict_e.egg-info/requires.txt
+src/metapathpredict_e.egg-info/top_level.txt
